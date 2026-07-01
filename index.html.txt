@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Pribadi - Second Brain</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">AI</div>
+          <div>
+            <h1>Second Brain</h1>
+            <p>AI Pribadi</p>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active" data-view="dashboard">Dashboard</button>
+          <button class="nav-item" data-view="add-idea">Tambah Ide</button>
+          <button class="nav-item" data-view="all-ideas">Semua Ide</button>
+          <button class="nav-item" data-view="projects">Proyek</button>
+          <button class="nav-item" data-view="notes">Catatan</button>
+          <button class="nav-item" data-view="settings">Pengaturan</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <p>Dominasi hitam, putih, dan biru.</p>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h2 id="pageTitle">Dashboard</h2>
+            <p id="pageSubtitle">Kelola ide, catatan, dan proyekmu di satu tempat.</p>
+          </div>
+          <div class="topbar-actions">
+            <div class="search-box">
+              <span>⌕</span>
+              <input id="searchInput" type="text" placeholder="Cari ide..." />
+            </div>
+          </div>
+        </header>
+
+        <section class="view active" id="dashboardView">
+          <div class="hero-card">
+            <h3>Selamat Datang di AI Pribadi</h3>
+            <p>Simpan ide, bangun proyek, dan kembangkan second brain milikmu.</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span>Total Ide</span>
+              <strong id="totalIdeas">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Total Proyek</span>
+              <strong id="totalProjects">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Total Catatan</span>
+              <strong id="totalNotes">0</strong>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Aktivitas Terbaru</h3>
+            <div id="recentActivities" class="activity-list"></div>
+          </div>
+        </section>
+
+        <section class="view" id="addIdeaView">
+          <div class="panel">
+            <h3>Tambah Ide Baru</h3>
+            <form id="ideaForm" class="form-grid">
+              <div class="form-group">
+                <label for="ideaTitle">Judul Ide</label>
+                <input id="ideaTitle" type="text" placeholder="Contoh: AI pengingat harian" required />
+              </div>
+
+              <div class="form-group">
+                <label for="ideaCategory">Kategori</label>
+                <input id="ideaCategory" type="text" placeholder="Contoh: Produktivitas" required />
+              </div>
+
+              <div class="form-group full">
+                <label for="ideaDescription">Deskripsi Ide</label>
+                <textarea id="ideaDescription" rows="5" placeholder="Tulis deskripsi ide..." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="ideaPriority">Tingkat Prioritas</label>
+                <select id="ideaPriority" required>
+                  <option value="Rendah">Rendah</option>
+                  <option value="Sedang" selected>Sedang</option>
+                  <option value="Tinggi">Tinggi</option>
+                </select>
+              </div>
+
+              <div class="form-actions full">
+                <button type="submit" class="btn primary">Simpan</button>
+                <button type="reset" class="btn secondary">Reset</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section class="view" id="allIdeasView">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Semua Ide</h3>
+              <div class="filters">
+                <select id="categoryFilter">
+                  <option value="all">Semua Kategori</option>
+                </select>
+                <select id="priorityFilter">
+                  <option value="all">Semua Prioritas</option>
+                  <option value="Rendah">Rendah</option>
+                  <option value="Sedang">Sedang</option>
+                  <option value="Tinggi">Tinggi</option>
+                </select>
+              </div>
+            </div>
+            <div id="ideasGrid" class="cards-grid"></div>
+          </div>
+        </section>
+
+        <section class="view" id="projectsView">
+          <div class="panel">
+            <h3>Proyek</h3>
+            <p class="muted">Bagian ini bisa dikembangkan menjadi tracker proyek di masa depan.</p>
+          </div>
+        </section>
+
+        <section class="view" id="notesView">
+          <div class="panel">
+            <h3>Catatan</h3>
+            <p class="muted">Simpan catatan penting, referensi, dan insight di sini.</p>
+          </div>
+        </section>
+
+        <section class="view" id="settingsView">
+          <div class="panel">
+            <h3>Pengaturan</h3>
+            <p class="muted">Atur preferensi tampilan dan pengelolaan data di sini.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <button id="closeModal" class="modal-close">×</button>
+        <h3>Detail Ide</h3>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
